@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using UnityEngine.UI;
 public class PlayerController : MonoBehaviour
 {
     public Rigidbody rb;    // Start is called before the first frame update
@@ -8,13 +8,19 @@ public class PlayerController : MonoBehaviour
 
     private int score = 0;
     public int health = 5;
+    public Text scoreText;
+
+    void SetScoreText()
+    {
+        scoreText.text = score.ToString("Score: " + score);
+    }
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Pickup"))
         {
             other.gameObject.SetActive(false);
             score++;
-            Debug.Log("Score: " + score);
+            SetScoreText();
             Destroy(other.gameObject);
         }
         if (other.gameObject.CompareTag("Trap"))
