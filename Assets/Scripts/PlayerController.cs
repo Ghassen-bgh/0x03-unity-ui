@@ -9,10 +9,16 @@ public class PlayerController : MonoBehaviour
     private int score = 0;
     public int health = 5;
     public Text scoreText;
+    public Text healthText;
 
     void SetScoreText()
     {
         scoreText.text = score.ToString("Score: " + score);
+    }
+
+    void SetHealthText()
+    {
+        healthText.text = "Health: " + health;
     }
     void OnTriggerEnter(Collider other)
     {
@@ -26,7 +32,7 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("Trap"))
         {
             health--;
-            Debug.Log("Health: " + health);
+            SetHealthText();
         }
         if (other.gameObject.CompareTag("Goal"))
         {
