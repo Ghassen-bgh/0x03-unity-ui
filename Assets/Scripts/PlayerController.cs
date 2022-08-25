@@ -91,5 +91,9 @@ public class PlayerController : MonoBehaviour
         {
             lose();
         }
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            SceneManager.LoadScene("Menu");
+        }
     }
 }
